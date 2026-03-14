@@ -1,0 +1,28 @@
+{
+  "extends": ["./oxlintrc.json"],
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["@core/*"],
+            "message": "tooling/ cannot import from @core/* — tooling has no workspace dependencies."
+          },
+          {
+            "group": ["@packages/*"],
+            "message": "tooling/ cannot import from @packages/* — tooling has no workspace dependencies."
+          },
+          {
+            "group": ["@apps/*"],
+            "message": "tooling/ cannot import from @apps/* — tooling has no workspace dependencies."
+          },
+          {
+            "group": ["@libs/*"],
+            "message": "tooling/ cannot import from @libs/* — tooling has no workspace dependencies."
+          }
+        ]
+      }
+    ]
+  }
+}

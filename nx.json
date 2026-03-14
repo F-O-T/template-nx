@@ -1,5 +1,30 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "sync": {
+    "applyChanges": true
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "check-types"
+        },
+        "build": {
+          "targetName": "build:tsc",
+          "configName": "tsconfig.json"
+        }
+      }
+    },
+    {
+      "plugin": "@nx/vite",
+      "options": {
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "previewTargetName": "serve"
+      }
+    }
+  ],
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
@@ -12,11 +37,27 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": ["production", "^production"],
+      "cache": true
+    },
+    "build:tsc": {
+      "dependsOn": ["^build:tsc"],
+      "inputs": ["production", "^production"],
+      "cache": true
     },
     "check-types": {
       "dependsOn": ["^check-types"],
-      "inputs": ["default", "^default"]
+      "inputs": ["default", "^default"],
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "format": {
+      "cache": true
+    },
+    "check-boundaries": {
+      "cache": true
     },
     "dev": {
       "cache": false

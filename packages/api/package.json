@@ -1,28 +1,35 @@
 {
-  "name": "@working-app/api",
+  "name": "@packages/api",
   "type": "module",
   "exports": {
     ".": {
-      "default": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./*": {
-      "default": "./src/*.ts"
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
     }
   },
-  "scripts": {},
+  "scripts": {
+    "build": "tsc --build",
+    "check-types": "tsc --build --emitDeclarationOnly",
+    "lint": "oxlint -c ../../tooling/oxc/oxlintrc.packages.json",
+    "format": "oxfmt --write src"
+  },
   "dependencies": {
     "@orpc/client": "catalog:",
     "@orpc/openapi": "catalog:",
     "@orpc/server": "catalog:",
     "@orpc/zod": "catalog:",
-    "@working-app/auth": "workspace:*",
-    "@working-app/db": "workspace:*",
-    "@working-app/env": "workspace:*",
+    "@core/auth": "workspace:*",
+    "@core/db": "workspace:*",
+    "@core/env": "workspace:*",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@working-app/config": "workspace:*",
+    "@tooling/config": "workspace:*",
     "typescript": "^5"
   }
 }

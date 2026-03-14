@@ -1,3 +1,23 @@
 {
-  "extends": "@working-app/config/tsconfig.base.json"
+  "extends": "@tooling/config/tsconfig.base.json",
+  "references": [
+    {
+      "path": "./packages/api"
+    },
+    {
+      "path": "./packages/ui"
+    },
+    {
+      "path": "./core/auth"
+    },
+    {
+      "path": "./core/env"
+    },
+    {
+      "path": "./core/db"
+    },
+    {
+      "path": "./core/mastra"
+    }
+  ]
 }

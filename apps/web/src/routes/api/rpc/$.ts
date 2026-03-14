@@ -4,8 +4,8 @@ import { onError } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
 import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4";
 import { createFileRoute } from "@tanstack/react-router";
-import { createContext } from "@working-app/api/context";
-import { appRouter } from "@working-app/api/routers/index";
+import { createContext } from "@packages/api/context";
+import { appRouter } from "@packages/api/routers/index";
 
 const rpcHandler = new RPCHandler(appRouter, {
   interceptors: [

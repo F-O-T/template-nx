@@ -1,8 +1,8 @@
 import { useForm } from "@tanstack/react-form";
 import { useNavigate } from "@tanstack/react-router";
-import { Button } from "@working-app/ui/components/button";
-import { Input } from "@working-app/ui/components/input";
-import { Label } from "@working-app/ui/components/label";
+import { Button } from "@packages/ui/components/button";
+import { Input } from "@packages/ui/components/input";
+import { Label } from "@packages/ui/components/label";
 import { toast } from "sonner";
 import z from "zod";
 

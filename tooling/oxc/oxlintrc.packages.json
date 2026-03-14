@@ -1,0 +1,16 @@
+{
+  "extends": ["./oxlintrc.json"],
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["@apps/*"],
+            "message": "packages/ cannot import from @apps/* — only @packages/*, @core/*, @libs/*, and @tooling/* are allowed."
+          }
+        ]
+      }
+    ]
+  }
+}

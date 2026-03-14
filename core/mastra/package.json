@@ -1,0 +1,31 @@
+{
+  "name": "@core/mastra",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "check-types": "tsc --build --emitDeclarationOnly",
+    "dev": "mastra dev",
+    "lint": "oxlint -c ../../tooling/oxc/oxlintrc.core.json",
+    "format": "oxfmt --write src"
+  },
+  "dependencies": {
+    "@core/env": "workspace:*",
+    "@mastra/core": "latest",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@tooling/config": "workspace:*",
+    "mastra": "latest",
+    "typescript": "^5"
+  }
+}

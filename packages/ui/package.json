@@ -1,17 +1,28 @@
 {
-  "name": "@working-app/ui",
+  "name": "@packages/ui",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "exports": {
-    "./globals.css": "./src/styles/globals.css",
-    "./lib/*": "./src/lib/*.ts",
-    "./components/*": "./src/components/*.tsx",
-    "./hooks/*": "./src/hooks/*.ts",
+    "./lib/*": {
+      "types": "./dist/lib/*.d.ts",
+      "default": "./dist/lib/*.js"
+    },
+    "./components/*": {
+      "types": "./dist/components/*.d.ts",
+      "default": "./dist/components/*.js"
+    },
+    "./hooks/*": {
+      "types": "./dist/hooks/*.d.ts",
+      "default": "./dist/hooks/*.js"
+    },
     "./postcss.config": "./postcss.config.mjs"
   },
   "scripts": {
-    "check-types": "tsc --noEmit"
+    "build": "tsc --build",
+    "check-types": "tsc --build --emitDeclarationOnly",
+    "lint": "oxlint -c ../../tooling/oxc/oxlintrc.packages.json",
+    "format": "oxfmt --write src"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
@@ -29,7 +40,7 @@
   "devDependencies": {
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@working-app/config": "workspace:*",
+    "@tooling/config": "workspace:*",
     "tailwindcss": "catalog:",
     "typescript": "^5.9.3"
   }

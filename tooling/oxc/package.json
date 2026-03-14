@@ -1,0 +1,16 @@
+{
+  "name": "@tooling/oxc",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt --write",
+    "format:check": "oxfmt --check"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.26.0",
+    "oxlint": "^1.41.0"
+  }
+}

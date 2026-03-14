@@ -5,8 +5,10 @@ pre-commit:
   parallel: true
   jobs:
     - name: oxlint
-      run: bun oxlint --fix {staged_files}
+      run: bun oxlint -c tooling/oxc/oxlintrc.json --fix {staged_files}
       stage_fixed: true
+    - name: check-boundaries
+      run: bun run check-boundaries
     - name: oxfmt
       run: bun oxfmt --write {staged_files}
       stage_fixed: true

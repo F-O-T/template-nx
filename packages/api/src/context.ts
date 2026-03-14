@@ -1,4 +1,4 @@
-import { auth } from "@working-app/auth";
+import { auth } from "@core/auth";
 
 export async function createContext({ req }: { req: Request }) {
   const session = await auth.api.getSession({

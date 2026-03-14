@@ -1,13 +1,15 @@
 {
-  "extends": "@working-app/config/tsconfig.base.json",
+  "extends": "@tooling/config/tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "react-jsx",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "rootDir": "src",
+    "outDir": "dist",
     "paths": {
-      "@working-app/ui/*": ["./src/*"]
+      "@packages/ui/*": ["./src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

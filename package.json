@@ -4,7 +4,10 @@
   "workspaces": {
     "packages": [
       "apps/*",
-      "packages/*"
+      "packages/*",
+      "core/*",
+      "tooling/*",
+      "libs/*"
     ],
     "catalog": {
       "dotenv": "^17.2.2",
@@ -30,25 +33,31 @@
     "dev": "nx run-many -t dev",
     "build": "nx run-many -t build",
     "check-types": "nx run-many -t check-types",
-    "dev:web": "nx run-many -t dev --projects=web",
-    "db:push": "nx run-many -t db:push --projects=@working-app/db",
-    "db:studio": "nx run-many -t db:studio --projects=@working-app/db",
-    "db:generate": "nx run-many -t db:generate --projects=@working-app/db",
-    "db:migrate": "nx run-many -t db:migrate --projects=@working-app/db",
-    "db:start": "nx run-many -t db:start --projects=@working-app/db",
-    "db:watch": "nx run-many -t db:watch --projects=@working-app/db",
-    "db:stop": "nx run-many -t db:stop --projects=@working-app/db",
-    "db:down": "nx run-many -t db:down --projects=@working-app/db",
-    "check": "oxlint && oxfmt --write"
+    "dev:web": "nx run-many -t dev --projects=@apps/web",
+    "lint": "nx run-many -t lint",
+    "lint:fix": "nx run-many -t lint -- --fix",
+    "format": "nx run-many -t format",
+    "check": "bun run lint && bun run format",
+    "check-boundaries": "bun run tooling/boundary/check-boundaries.ts",
+    "db:push": "nx run-many -t db:push --projects=@core/db",
+    "db:studio": "nx run-many -t db:studio --projects=@core/db",
+    "db:generate": "nx run-many -t db:generate --projects=@core/db",
+    "db:migrate": "nx run-many -t db:migrate --projects=@core/db",
+    "db:start": "nx run-many -t db:start --projects=@core/db",
+    "db:watch": "nx run-many -t db:watch --projects=@core/db",
+    "db:stop": "nx run-many -t db:stop --projects=@core/db",
+    "db:down": "nx run-many -t db:down --projects=@core/db"
   },
   "dependencies": {
-    "@working-app/env": "workspace:*",
+    "@core/env": "workspace:*",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@nx/js": "^22.5.4",
+    "@nx/vite": "^22.5.4",
+    "@tooling/config": "workspace:*",
     "@types/node": "catalog:",
-    "@working-app/config": "workspace:*",
     "lefthook": "^2.0.13",
     "nx": "^21.5.2",
     "oxfmt": "^0.26.0",

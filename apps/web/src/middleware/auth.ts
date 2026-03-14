@@ -1,5 +1,5 @@
 import { createMiddleware } from "@tanstack/react-start";
-import { auth } from "@working-app/auth";
+import { auth } from "@core/auth";
 
 export const authMiddleware = createMiddleware().server(async ({ next, request }) => {
   const session = await auth.api.getSession({

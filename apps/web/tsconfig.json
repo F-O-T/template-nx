@@ -23,7 +23,21 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@working-app/ui/*": ["../../packages/ui/src/*"]
+      "@packages/ui/*": ["../../packages/ui/src/*"]
     }
-  }
+  },
+  "references": [
+    {
+      "path": "../../packages/ui"
+    },
+    {
+      "path": "../../core/env"
+    },
+    {
+      "path": "../../core/auth"
+    },
+    {
+      "path": "../../packages/api"
+    }
+  ]
 }
