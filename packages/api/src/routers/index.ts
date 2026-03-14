@@ -1,12 +1,15 @@
 import type { RouterClient } from "@orpc/server";
 
-import { protectedProcedure, publicProcedure } from "../index";
+import {
+  rateLimitedProtectedProcedure,
+  rateLimitedPublicProcedure,
+} from "../index";
 
 export const appRouter = {
-  healthCheck: publicProcedure.handler(() => {
+  healthCheck: rateLimitedPublicProcedure.handler(() => {
     return "OK";
   }),
-  privateData: protectedProcedure.handler(({ context }) => {
+  privateData: rateLimitedProtectedProcedure.handler(({ context }) => {
     return {
       message: "This is private",
       user: context.session?.user,

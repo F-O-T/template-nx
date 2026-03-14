@@ -1,5 +1,5 @@
 import pino from "pino";
-import { env } from "@core/env/server";
+import { env } from "@core/env";
 
 const transport =
   env.POSTHOG_API_KEY && env.POSTHOG_HOST

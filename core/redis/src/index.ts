@@ -1,4 +1,4 @@
-import { env } from "@core/env/server";
+import { env } from "@core/env";
 import Redis from "ioredis";
 
 export function createRedis(url?: string) {

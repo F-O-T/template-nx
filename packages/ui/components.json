@@ -11,14 +11,16 @@
     "prefix": ""
   },
   "iconLibrary": "lucide",
+  "menuColor": "default",
+  "menuAccent": "subtle",
   "aliases": {
     "components": "@packages/ui/components",
     "utils": "@packages/ui/lib/utils",
-    "hooks": "@packages/ui/hooks",
+    "ui": "@packages/ui/components",
     "lib": "@packages/ui/lib",
-    "ui": "@packages/ui/components"
+    "hooks": "@packages/ui/hooks"
   },
-  "menuColor": "default",
-  "menuAccent": "subtle",
-  "registries": {}
+  "registries": {
+    "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json"
+  }
 }

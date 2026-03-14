@@ -1,4 +1,4 @@
-import { env } from "@core/env/web";
+import { env } from "@core/env";
 import posthog from "posthog-js";
 
 export function initPostHog() {

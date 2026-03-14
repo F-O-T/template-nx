@@ -13,7 +13,12 @@ export const env = createEnv({
     POSTHOG_HOST: z.url(),
     OTEL_SERVICE_NAME: z.string().default("working-app"),
     REDIS_URL: z.string().min(1).optional(),
-    ARCJET_KEY: z.string().min(1).optional(),
+    ARCJET_KEY: z.string().min(1),
+  },
+  clientPrefix: "VITE_",
+  client: {
+    VITE_POSTHOG_API_KEY: z.string().min(1),
+    VITE_POSTHOG_HOST: z.url(),
   },
   runtimeEnv: process.env,
   emptyStringAsUndefined: true,

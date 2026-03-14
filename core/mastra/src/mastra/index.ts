@@ -1,6 +1,6 @@
 import { Mastra } from "@mastra/core";
 import { PosthogExporter } from "@mastra/posthog";
-import { env } from "@core/env/server";
+import { env } from "@core/env";
 import { weatherAgent } from "./agents/weather-agent";
 
 export const mastra = new Mastra({

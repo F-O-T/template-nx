@@ -19,5 +19,8 @@
     {
       "path": "./core/mastra"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "skipLibCheck": true
+  }
 }

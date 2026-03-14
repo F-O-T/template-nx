@@ -7,7 +7,7 @@ import {
 import { Resource } from "@opentelemetry/resources";
 import { ATTR_SERVICE_NAME } from "@opentelemetry/semantic-conventions";
 import { ORPCInstrumentation } from "@orpc/otel";
-import { env } from "@core/env/server";
+import { env } from "@core/env";
 
 const resource = new Resource({
   [ATTR_SERVICE_NAME]: env.OTEL_SERVICE_NAME,

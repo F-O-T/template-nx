@@ -52,7 +52,7 @@
    --font-serif: Sora, ui-serif, Georgia, serif;
    --font-mono:
       ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-   --radius: 1.1rem;
+   --radius: 0.625rem;
    --shadow-x: 0px;
    --shadow-y: 4px;
    --shadow-blur: 8px;
@@ -120,7 +120,7 @@
    --font-serif: Sora, ui-serif, Georgia, serif;
    --font-mono:
       ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-   --radius: 1.1rem;
+   --radius: 0.625rem;
    --shadow-x: 0px;
    --shadow-y: 4px;
    --shadow-blur: 8px;

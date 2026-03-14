@@ -1,6 +1,6 @@
 import { db } from "@core/db";
 import * as schema from "@core/db/schema/auth";
-import { env } from "@core/env/server";
+import { env } from "@core/env";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { tanstackStartCookies } from "better-auth/tanstack-start";

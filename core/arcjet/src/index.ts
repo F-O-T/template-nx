@@ -1,11 +1,29 @@
-import { env } from "@core/env/server";
-import arcjet from "@arcjet/node";
+import { env } from "@core/env";
+import arcjet, { tokenBucket, fixedWindow, shield } from "@arcjet/node";
+import type { ArcjetNodeRequest } from "@arcjet/node";
 
 export const aj = arcjet({
-  key: env.ARCJET_KEY!,
+  key: env.ARCJET_KEY,
   characteristics: ["ip.src"],
-  rules: [],
+  rules: [shield({ mode: "LIVE" })],
 });
 
-export { arcjet };
+export function toArcjetRequest(req: Request): ArcjetNodeRequest {
+  const url = new URL(req.url);
+  const headers: Record<string, string> = {};
+  req.headers.forEach((value, key) => {
+    headers[key] = value;
+  });
+
+  return {
+    headers,
+    method: req.method,
+    url: url.pathname + url.search,
+    socket: {
+      remoteAddress: headers["x-forwarded-for"]?.split(",")[0]?.trim(),
+    },
+  };
+}
+
+export { tokenBucket, fixedWindow, shield };
 export type { ArcjetDecision, ArcjetRuleResult } from "@arcjet/node";

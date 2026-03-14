@@ -1,0 +1,11 @@
+{
+  "name": "@apps/storybook",
+  "targets": {
+    "dev": {
+      "command": "storybook dev -p 6006 -c apps/storybook/.storybook",
+      "options": {
+        "cwd": "{workspaceRoot}"
+      }
+    }
+  }
+}

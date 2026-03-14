@@ -24,6 +24,7 @@
     "@orpc/zod": "catalog:",
     "@core/auth": "workspace:*",
     "@core/db": "workspace:*",
+    "@core/arcjet": "workspace:*",
     "@core/env": "workspace:*",
     "dotenv": "catalog:",
     "zod": "catalog:"

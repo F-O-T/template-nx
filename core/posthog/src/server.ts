@@ -1,4 +1,4 @@
-import { env } from "@core/env/server";
+import { env } from "@core/env";
 import { PostHog } from "posthog-node";
 
 export function createPostHogClient() {
