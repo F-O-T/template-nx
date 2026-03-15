@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { Dialog as DialogPrimitive } from '@base-ui/react/dialog';
+import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import type {
   ComponentProps,
   Dispatch,
@@ -8,16 +8,9 @@ import type {
   MouseEventHandler,
   ReactElement,
   SetStateAction,
-} from 'react';
-import {
-  Children,
-  cloneElement,
-  createContext,
-  useCallback,
-  useContext,
-  useState,
-} from 'react';
-import { cn } from '@packages/ui/lib/utils';
+} from "react";
+import { Children, cloneElement, createContext, useCallback, useContext, useState } from "react";
+import { cn } from "@packages/ui/lib/utils";
 
 type DialogStackContextType = {
   activeIndex: number;
@@ -94,19 +87,16 @@ export const DialogStack = ({
 
 export type DialogStackTriggerProps = DialogPrimitive.Trigger.Props;
 
-export const DialogStackTrigger = ({
-  className,
-  ...props
-}: DialogStackTriggerProps) => {
+export const DialogStackTrigger = ({ className, ...props }: DialogStackTriggerProps) => {
   return (
     <DialogPrimitive.Trigger
       data-slot="dialog-stack-trigger"
       className={cn(
-        'inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium text-sm',
-        'ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2',
-        'focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
-        'bg-primary text-primary-foreground hover:bg-primary/90',
-        'h-10 px-4 py-2',
+        "inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium text-sm",
+        "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2",
+        "focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+        "bg-primary text-primary-foreground hover:bg-primary/90",
+        "h-10 px-4 py-2",
         className,
       )}
       {...props}
@@ -116,17 +106,14 @@ export const DialogStackTrigger = ({
 
 export type DialogStackOverlayProps = DialogPrimitive.Backdrop.Props;
 
-export const DialogStackOverlay = ({
-  className,
-  ...props
-}: DialogStackOverlayProps) => {
+export const DialogStackOverlay = ({ className, ...props }: DialogStackOverlayProps) => {
   return (
     <DialogPrimitive.Backdrop
       data-slot="dialog-stack-overlay"
       className={cn(
-        'fixed inset-0 z-50 bg-black/80',
-        'data-open:animate-in data-open:fade-in-0',
-        'data-closed:animate-out data-closed:fade-out-0',
+        "fixed inset-0 z-50 bg-black/80",
+        "data-open:animate-in data-open:fade-in-0",
+        "data-closed:animate-out data-closed:fade-out-0",
         className,
       )}
       {...props}
@@ -135,16 +122,10 @@ export const DialogStackOverlay = ({
 };
 
 export type DialogStackBodyProps = HTMLAttributes<HTMLDivElement> & {
-  children:
-    | ReactElement<DialogStackChildProps>[]
-    | ReactElement<DialogStackChildProps>;
+  children: ReactElement<DialogStackChildProps>[] | ReactElement<DialogStackChildProps>;
 };
 
-export const DialogStackBody = ({
-  children,
-  className,
-  ...props
-}: DialogStackBodyProps) => {
+export const DialogStackBody = ({ children, className, ...props }: DialogStackBodyProps) => {
   const context = useContext(DialogStackContext);
   const [totalDialogs, setTotalDialogs] = useState(Children.count(children));
   const [activeIndex, setActiveIndex] = useState(0);
@@ -163,7 +144,7 @@ export const DialogStackBody = ({
         <DialogStackOverlay />
         <div
           className={cn(
-            'pointer-events-none fixed inset-0 z-50 mx-auto flex w-full max-w-lg flex-col items-center justify-center',
+            "pointer-events-none fixed inset-0 z-50 mx-auto flex w-full max-w-lg flex-col items-center justify-center",
             className,
           )}
           {...props}
@@ -187,7 +168,7 @@ export const DialogStackBody = ({
   );
 };
 
-export type DialogStackContentProps = ComponentProps<'div'> & {
+export type DialogStackContentProps = ComponentProps<"div"> & {
   index?: number;
   offset?: number;
 };
@@ -219,7 +200,7 @@ export const DialogStackContent = ({
     <div
       data-slot="dialog-stack-content"
       className={cn(
-        'h-auto w-full rounded-lg border bg-background p-6 shadow-lg transition-all duration-300',
+        "h-auto w-full rounded-lg border bg-background p-6 shadow-lg transition-all duration-300",
         className,
       )}
       onClick={handleClick}
@@ -228,20 +209,16 @@ export const DialogStackContent = ({
         transform: `translateY(${translateY})`,
         width: `calc(100% - ${Math.abs(distanceFromActive) * 10}px)`,
         zIndex: 50 - Math.abs(context.activeIndex - index),
-        position: distanceFromActive ? 'absolute' : 'relative',
+        position: distanceFromActive ? "absolute" : "relative",
         opacity: distanceFromActive > 0 ? 0 : 1,
-        cursor:
-          context.clickable && context.activeIndex > index
-            ? 'pointer'
-            : 'default',
+        cursor: context.clickable && context.activeIndex > index ? "pointer" : "default",
       }}
       {...props}
     >
       <div
         className={cn(
-          'h-full w-full transition-all duration-300',
-          context.activeIndex !== index &&
-            'pointer-events-none select-none opacity-0',
+          "h-full w-full transition-all duration-300",
+          context.activeIndex !== index && "pointer-events-none select-none opacity-0",
         )}
       >
         {children}
@@ -252,66 +229,47 @@ export const DialogStackContent = ({
 
 export type DialogStackTitleProps = DialogPrimitive.Title.Props;
 
-export const DialogStackTitle = ({
-  className,
-  ...props
-}: DialogStackTitleProps) => (
+export const DialogStackTitle = ({ className, ...props }: DialogStackTitleProps) => (
   <DialogPrimitive.Title
     data-slot="dialog-stack-title"
-    className={cn(
-      'font-semibold text-lg leading-none tracking-tight',
-      className,
-    )}
+    className={cn("font-semibold text-lg leading-none tracking-tight", className)}
     {...props}
   />
 );
 
 export type DialogStackDescriptionProps = DialogPrimitive.Description.Props;
 
-export const DialogStackDescription = ({
-  className,
-  ...props
-}: DialogStackDescriptionProps) => (
+export const DialogStackDescription = ({ className, ...props }: DialogStackDescriptionProps) => (
   <DialogPrimitive.Description
     data-slot="dialog-stack-description"
-    className={cn('text-muted-foreground text-sm', className)}
+    className={cn("text-muted-foreground text-sm", className)}
     {...props}
   />
 );
 
 export type DialogStackHeaderProps = HTMLAttributes<HTMLDivElement>;
 
-export const DialogStackHeader = ({
-  className,
-  ...props
-}: DialogStackHeaderProps) => (
+export const DialogStackHeader = ({ className, ...props }: DialogStackHeaderProps) => (
   <div
     data-slot="dialog-stack-header"
-    className={cn(
-      'flex flex-col space-y-1.5 text-center sm:text-left',
-      className,
-    )}
+    className={cn("flex flex-col space-y-1.5 text-center sm:text-left", className)}
     {...props}
   />
 );
 
 export type DialogStackFooterProps = HTMLAttributes<HTMLDivElement>;
 
-export const DialogStackFooter = ({
-  children,
-  className,
-  ...props
-}: DialogStackFooterProps) => (
+export const DialogStackFooter = ({ children, className, ...props }: DialogStackFooterProps) => (
   <div
     data-slot="dialog-stack-footer"
-    className={cn('flex items-center justify-end space-x-2 pt-4', className)}
+    className={cn("flex items-center justify-end space-x-2 pt-4", className)}
     {...props}
   >
     {children}
   </div>
 );
 
-export type DialogStackNextProps = ComponentProps<'button'>;
+export type DialogStackNextProps = ComponentProps<"button">;
 
 export const DialogStackNext = ({
   children,
@@ -332,7 +290,7 @@ export const DialogStackNext = ({
     <button
       data-slot="dialog-stack-next"
       className={cn(
-        'inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+        "inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
         className,
       )}
       disabled={context.activeIndex >= context.totalDialogs - 1}
@@ -340,12 +298,12 @@ export const DialogStackNext = ({
       type="button"
       {...props}
     >
-      {children || 'Next'}
+      {children || "Next"}
     </button>
   );
 };
 
-export type DialogStackPreviousProps = ComponentProps<'button'>;
+export type DialogStackPreviousProps = ComponentProps<"button">;
 
 export const DialogStackPrevious = ({
   children,
@@ -366,7 +324,7 @@ export const DialogStackPrevious = ({
     <button
       data-slot="dialog-stack-previous"
       className={cn(
-        'inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+        "inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
         className,
       )}
       disabled={context.activeIndex <= 0}
@@ -374,20 +332,13 @@ export const DialogStackPrevious = ({
       type="button"
       {...props}
     >
-      {children || 'Previous'}
+      {children || "Previous"}
     </button>
   );
 };
 
 export type DialogStackCloseProps = DialogPrimitive.Close.Props;
 
-export const DialogStackClose = ({
-  className,
-  ...props
-}: DialogStackCloseProps) => (
-  <DialogPrimitive.Close
-    data-slot="dialog-stack-close"
-    className={className}
-    {...props}
-  />
+export const DialogStackClose = ({ className, ...props }: DialogStackCloseProps) => (
+  <DialogPrimitive.Close data-slot="dialog-stack-close" className={className} {...props} />
 );

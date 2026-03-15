@@ -1,23 +1,24 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { ComponentType } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
   TooltipProvider,
-} from '@packages/ui/components/tooltip';
-import { Button } from '@packages/ui/components/button';
+} from "@packages/ui/components/tooltip";
+import { Button } from "@packages/ui/components/button";
 
-const meta = {
-  title: 'Components/Tooltip',
+const meta: Meta<typeof Tooltip> = {
+  title: "Components/Tooltip",
   component: Tooltip,
   decorators: [
-    (Story) => (
+    (Story: ComponentType) => (
       <TooltipProvider>
         <Story />
       </TooltipProvider>
     ),
   ],
-} satisfies Meta<typeof Tooltip>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -25,12 +26,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Tooltip>
-      <TooltipTrigger render={<Button variant="outline" />}>
-        Hover me
-      </TooltipTrigger>
-      <TooltipContent>
-        This is a tooltip
-      </TooltipContent>
+      <TooltipTrigger render={<Button variant="outline" />}>Hover me</TooltipTrigger>
+      <TooltipContent>This is a tooltip</TooltipContent>
     </Tooltip>
   ),
 };

@@ -9,6 +9,9 @@
   "references": [
     {
       "path": "../env"
+    },
+    {
+      "path": "../../tooling/test"
     }
   ]
 }

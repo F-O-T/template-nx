@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Progress } from '@packages/ui/components/progress';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Progress } from "@packages/ui/components/progress";
 
 const meta = {
-  title: 'Components/Progress',
+  title: "Components/Progress",
   component: Progress,
 } satisfies Meta<typeof Progress>;
 
@@ -22,6 +22,9 @@ export const Full: Story = {
 };
 
 export const AllValues: Story = {
+  args: {
+    value: 0,
+  },
   render: () => (
     <div className="flex w-64 flex-col gap-4">
       <Progress value={0} />

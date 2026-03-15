@@ -1,9 +1,6 @@
 import type { RouterClient } from "@orpc/server";
 
-import {
-  rateLimitedProtectedProcedure,
-  rateLimitedPublicProcedure,
-} from "../index";
+import { rateLimitedProtectedProcedure, rateLimitedPublicProcedure } from "../index";
 
 export const appRouter = {
   healthCheck: rateLimitedPublicProcedure.handler(() => {

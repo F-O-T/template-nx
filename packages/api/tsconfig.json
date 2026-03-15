@@ -11,10 +11,16 @@
       "path": "../../core/env"
     },
     {
+      "path": "../../core/arcjet"
+    },
+    {
       "path": "../../core/db"
     },
     {
       "path": "../../core/auth"
+    },
+    {
+      "path": "../../tooling/test"
     }
   ]
 }

@@ -4,36 +4,24 @@ import type React from "react";
 function ContextPanel({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn(
-        "px-2 pt-4 flex gap-4 h-full min-h-0 flex-col",
-        className,
-      )}
+      className={cn("px-2 pt-4 flex gap-4 h-full min-h-0 flex-col", className)}
       data-slot="context-panel"
       {...props}
     />
   );
 }
 
-function ContextPanelHeader({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function ContextPanelHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn(
-        "flex shrink-0 bg-background items-center gap-2 rounded-xl p-2",
-        className,
-      )}
+      className={cn("flex shrink-0 bg-background items-center gap-2 rounded-xl p-2", className)}
       data-slot="context-panel-header"
       {...props}
     />
   );
 }
 
-function ContextPanelTitle({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function ContextPanelTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn("flex-1 text-sm font-semibold", className)}
@@ -43,10 +31,7 @@ function ContextPanelTitle({
   );
 }
 
-function ContextPanelHeaderActions({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function ContextPanelHeaderActions({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn("flex items-center gap-1", className)}
@@ -56,26 +41,17 @@ function ContextPanelHeaderActions({
   );
 }
 
-function ContextPanelContent({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function ContextPanelContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn(
-        "flex gap-4 min-h-0 flex-1 flex-col overflow-auto",
-        className,
-      )}
+      className={cn("flex gap-4 min-h-0 flex-1 flex-col overflow-auto", className)}
       data-slot="context-panel-content"
       {...props}
     />
   );
 }
 
-function ContextPanelFooter({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function ContextPanelFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn("flex shrink-0 flex-col border-t p-2", className)}
