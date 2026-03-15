@@ -44,6 +44,4 @@ const rateLimit = o.middleware(async ({ context, next }) => {
 export const protectedProcedure = publicProcedure.use(requireAuth);
 
 export const rateLimitedPublicProcedure = publicProcedure.use(rateLimit);
-export const rateLimitedProtectedProcedure = publicProcedure
-  .use(rateLimit)
-  .use(requireAuth);
+export const rateLimitedProtectedProcedure = publicProcedure.use(rateLimit).use(requireAuth);

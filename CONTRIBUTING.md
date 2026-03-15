@@ -93,10 +93,8 @@ This repository uses Lefthook for pre-commit checks.
 The current pre-commit pipeline runs:
 
 - `oxlint` with autofix on staged files
-- `check-boundaries`
-- `oxfmt` on staged files
 
-That means a commit may modify staged files automatically as part of formatting and lint fixing. Review the staged diff after hooks run if you see files changed during commit preparation.
+That means a commit may modify staged files automatically as part of lint fixing. Review the staged diff after hooks run if you see files changed during commit preparation.
 
 ## Code conventions
 

@@ -1,9 +1,6 @@
 import { NodeSDK } from "@opentelemetry/sdk-node";
 import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
-import {
-  BatchLogRecordProcessor,
-  LoggerProvider,
-} from "@opentelemetry/sdk-logs";
+import { BatchLogRecordProcessor, LoggerProvider } from "@opentelemetry/sdk-logs";
 import { Resource } from "@opentelemetry/resources";
 import { ATTR_SERVICE_NAME } from "@opentelemetry/semantic-conventions";
 import { ORPCInstrumentation } from "@orpc/otel";
@@ -34,9 +31,7 @@ const loggerProvider = createLoggerProvider();
 
 const sdk = new NodeSDK({
   resource,
-  logRecordProcessors: loggerProvider.activeProcessor
-    ? [loggerProvider.activeProcessor]
-    : [],
+  logRecordProcessors: loggerProvider.activeProcessor ? [loggerProvider.activeProcessor] : [],
   instrumentations: [new ORPCInstrumentation()],
 });
 

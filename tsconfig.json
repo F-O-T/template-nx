@@ -18,6 +18,24 @@
     },
     {
       "path": "./core/mastra"
+    },
+    {
+      "path": "./apps/storybook"
+    },
+    {
+      "path": "./core/logging"
+    },
+    {
+      "path": "./core/posthog"
+    },
+    {
+      "path": "./tooling/test"
+    },
+    {
+      "path": "./core/arcjet"
+    },
+    {
+      "path": "./core/redis"
     }
   ],
   "compilerOptions": {

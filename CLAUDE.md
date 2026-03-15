@@ -69,8 +69,6 @@ This repository uses Lefthook.
 Current pre-commit jobs run:
 
 - `oxlint` with autofix on staged files
-- `bun run check-boundaries`
-- `oxfmt` on staged files
 
 Hooks may modify staged files automatically. Re-check diffs after hooks run.
 
