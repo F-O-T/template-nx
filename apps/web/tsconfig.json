@@ -22,13 +22,16 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@web/*": ["./src/*"],
       "@packages/ui/*": ["../../packages/ui/src/*"]
     }
   },
   "references": [
     {
       "path": "../../core/mastra"
+    },
+    {
+      "path": "../../core/arcjet"
     },
     {
       "path": "../../packages/ui"
