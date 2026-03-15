@@ -14,9 +14,16 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const sixDigitProps = { maxLength: 6 };
+const fourDigitProps = { maxLength: 4 };
+
 export const Default: Story = {
+  args: {
+    children: null,
+    maxLength: 6,
+  },
   render: () => (
-    <InputOTP maxLength={6}>
+    <InputOTP {...sixDigitProps}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />
         <InputOTPSlot index={1} />
@@ -33,8 +40,12 @@ export const Default: Story = {
 };
 
 export const FourDigits: Story = {
+  args: {
+    children: null,
+    maxLength: 4,
+  },
   render: () => (
-    <InputOTP maxLength={4}>
+    <InputOTP {...fourDigitProps}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />
         <InputOTPSlot index={1} />

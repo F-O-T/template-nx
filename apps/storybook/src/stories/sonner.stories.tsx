@@ -1,20 +1,21 @@
+import type { ComponentType } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { toast } from 'sonner';
 import { Toaster } from '@packages/ui/components/sonner';
 import { Button } from '@packages/ui/components/button';
 
-const meta = {
+const meta: Meta<typeof Toaster> = {
   title: 'Components/Sonner',
   component: Toaster,
   decorators: [
-    (Story) => (
+    (Story: ComponentType) => (
       <>
         <Story />
         <Toaster />
       </>
     ),
   ],
-} satisfies Meta<typeof Toaster>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -25,13 +26,22 @@ export const Default: Story = {
       <Button variant="outline" onClick={() => toast('Default toast message')}>
         Default
       </Button>
-      <Button variant="outline" onClick={() => toast.success('Successfully saved!')}>
+      <Button
+        variant="outline"
+        onClick={() => toast.success('Successfully saved!')}
+      >
         Success
       </Button>
-      <Button variant="outline" onClick={() => toast.error('Something went wrong')}>
+      <Button
+        variant="outline"
+        onClick={() => toast.error('Something went wrong')}
+      >
         Error
       </Button>
-      <Button variant="outline" onClick={() => toast.warning('Please be careful')}>
+      <Button
+        variant="outline"
+        onClick={() => toast.warning('Please be careful')}
+      >
         Warning
       </Button>
       <Button variant="outline" onClick={() => toast.info('Here is some info')}>

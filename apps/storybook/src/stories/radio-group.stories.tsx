@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, fn } from 'storybook/test';
-import { RadioGroup, RadioGroupItem } from '@packages/ui/components/radio-group';
+import { expect } from 'storybook/test';
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from '@packages/ui/components/radio-group';
 import { Label } from '@packages/ui/components/label';
 
 const meta = {
@@ -30,9 +33,16 @@ export const Default: Story = {
   ),
   play: async ({ canvas, userEvent }) => {
     const radios = canvas.getAllByRole('radio');
-    await expect(radios[0]).toBeChecked();
-    await userEvent.click(radios[1]);
-    await expect(radios[1]).toBeChecked();
-    await expect(radios[0]).not.toBeChecked();
+    const firstRadio = radios[0];
+    const secondRadio = radios[1];
+
+    if (!firstRadio || !secondRadio) {
+      throw new Error('Expected radio options to be rendered');
+    }
+
+    await expect(firstRadio).toBeChecked();
+    await userEvent.click(secondRadio);
+    await expect(secondRadio).toBeChecked();
+    await expect(firstRadio).not.toBeChecked();
   },
 };

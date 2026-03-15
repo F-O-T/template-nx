@@ -22,6 +22,9 @@ export const Full: Story = {
 };
 
 export const AllValues: Story = {
+  args: {
+    value: 0,
+  },
   render: () => (
     <div className="flex w-64 flex-col gap-4">
       <Progress value={0} />

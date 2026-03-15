@@ -40,16 +40,29 @@ export const Default: Story = {
   ),
   play: async ({ canvas, userEvent }) => {
     const triggers = canvas.getAllByRole('button');
-    await userEvent.click(triggers[0]);
-    await expect(canvas.getByText('Yes. It adheres to the WAI-ARIA design pattern.')).toBeVisible();
-    await userEvent.click(triggers[1]);
-    await expect(canvas.getByText('Yes. It comes with default styles that match your design system.')).toBeVisible();
+    const firstTrigger = triggers[0];
+    const secondTrigger = triggers[1];
+
+    if (!firstTrigger || !secondTrigger) {
+      throw new Error('Expected accordion triggers to be rendered');
+    }
+
+    await userEvent.click(firstTrigger);
+    await expect(
+      canvas.getByText('Yes. It adheres to the WAI-ARIA design pattern.'),
+    ).toBeVisible();
+    await userEvent.click(secondTrigger);
+    await expect(
+      canvas.getByText(
+        'Yes. It comes with default styles that match your design system.',
+      ),
+    ).toBeVisible();
   },
 };
 
 export const MultipleItems: Story = {
   render: () => (
-    <Accordion openMultiple>
+    <Accordion multiple>
       <AccordionItem value="item-1">
         <AccordionTrigger>First Section</AccordionTrigger>
         <AccordionContent>Content for the first section.</AccordionContent>

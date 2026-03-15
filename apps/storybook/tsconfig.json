@@ -4,10 +4,7 @@
     "outDir": "dist",
     "rootDir": "src",
     "jsx": "react-jsx",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "paths": {
-      "@packages/ui/*": ["../../packages/ui/src/*"]
-    }
+    "lib": ["ESNext", "DOM", "DOM.Iterable"]
   },
   "include": ["src"],
   "references": [
