@@ -189,6 +189,7 @@
       "dependencies": {
         "@core/env": "workspace:*",
         "@mastra/core": "latest",
+        "@mastra/observability": "latest",
         "@mastra/posthog": "latest",
         "zod": "catalog:",
       },

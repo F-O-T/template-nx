@@ -1,37 +1,42 @@
-import { NodeSDK } from "@opentelemetry/sdk-node";
-import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
-import { BatchLogRecordProcessor, LoggerProvider } from "@opentelemetry/sdk-logs";
-import { Resource } from "@opentelemetry/resources";
-import { ATTR_SERVICE_NAME } from "@opentelemetry/semantic-conventions";
-import { ORPCInstrumentation } from "@orpc/otel";
-import { env } from "@core/env";
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { OTLPLogExporter } from '@opentelemetry/exporter-logs-otlp-http';
+import {
+  BatchLogRecordProcessor,
+  ConsoleLogRecordExporter,
+  type LogRecordProcessor,
+  SimpleLogRecordProcessor,
+} from '@opentelemetry/sdk-logs';
+import { Resource } from '@opentelemetry/resources';
+import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions';
+import { ORPCInstrumentation } from '@orpc/otel';
+import { env } from '@core/env';
 
 const resource = new Resource({
   [ATTR_SERVICE_NAME]: env.OTEL_SERVICE_NAME,
 });
 
-function createLoggerProvider() {
-  const provider = new LoggerProvider({ resource });
+function createLogRecordProcessors() {
+  const processors: LogRecordProcessor[] = [
+    new SimpleLogRecordProcessor(new ConsoleLogRecordExporter()),
+  ];
 
-  if (env.POSTHOG_API_KEY && env.POSTHOG_HOST) {
-    const exporter = new OTLPLogExporter({
-      url: `${env.POSTHOG_HOST}/v1/logs`,
-      headers: {
-        Authorization: `Bearer ${env.POSTHOG_API_KEY}`,
-      },
-    });
+  const exporter = new OTLPLogExporter({
+    url: `${env.POSTHOG_HOST}/v1/logs`,
+    headers: {
+      Authorization: `Bearer ${env.POSTHOG_API_KEY}`,
+    },
+  });
 
-    provider.addLogRecordProcessor(new BatchLogRecordProcessor(exporter));
-  }
+  processors.push(new BatchLogRecordProcessor(exporter));
 
-  return provider;
+  return processors;
 }
 
-const loggerProvider = createLoggerProvider();
+const logRecordProcessors = createLogRecordProcessors();
 
 const sdk = new NodeSDK({
   resource,
-  logRecordProcessors: loggerProvider.activeProcessor ? [loggerProvider.activeProcessor] : [],
+  logRecordProcessors,
   instrumentations: [new ORPCInstrumentation()],
 });
 
@@ -43,4 +48,4 @@ export function shutdownOtel() {
   return sdk.shutdown();
 }
 
-export { loggerProvider, sdk };
+export { logRecordProcessors, sdk };

@@ -53,6 +53,21 @@ The main application is built with React, Vite, and TanStack Start. It consumes 
 
 Storybook is included as a dedicated app so you can develop and document the shared UI system in isolation.
 
+## Observability defaults
+
+The workspace logging and OpenTelemetry setup exports logs to these targets by default:
+
+- console
+- PostHog
+
+Mastra observability is also configured to export traces to PostHog by default.
+
+To run services that use `@core/logging` or `@core/mastra`, define these server environment variables:
+
+- `POSTHOG_API_KEY`
+- `POSTHOG_HOST`
+- `OTEL_SERVICE_NAME`
+
 ## Packages
 
 ### `packages/ui`

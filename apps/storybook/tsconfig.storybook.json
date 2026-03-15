@@ -1,8 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "outDir": "",
+    "rootDir": ".",
+    "outDir": "dist/storybook",
+    "declarationDir": "dist/storybook",
     "module": "esnext",
     "moduleResolution": "bundler"
   },
