@@ -21,6 +21,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["node"]
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@tooling/config/vitest/node": ["tooling/config/vitest/node.ts"]
+    }
   }
 }
