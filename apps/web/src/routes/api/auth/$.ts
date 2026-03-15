@@ -31,12 +31,26 @@ const signupProtection = aj
     }),
   );
 
-const magicLinkProtection = aj.withRule(
-  validateEmail({
-    deny: ['DISPOSABLE', 'INVALID', 'NO_MX_RECORDS'],
-    mode: 'LIVE',
-  }),
-);
+const magicLinkProtection = aj
+  .withRule(
+    detectBot({
+      allow: [],
+      mode: 'LIVE',
+    }),
+  )
+  .withRule(
+    validateEmail({
+      deny: ['DISPOSABLE', 'INVALID', 'NO_MX_RECORDS'],
+      mode: 'LIVE',
+    }),
+  )
+  .withRule(
+    slidingWindow({
+      interval: '10m',
+      max: 5,
+      mode: 'LIVE',
+    }),
+  );
 
 async function handleAuthRequest(request: Request) {
   const deniedResponse = await protectBetterAuthRequest(request, {
