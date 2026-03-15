@@ -1,5 +1,6 @@
 {
   "name": "@tooling/test",
+  "private": true,
   "type": "module",
   "exports": {
     ".": {

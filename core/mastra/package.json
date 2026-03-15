@@ -1,5 +1,6 @@
 {
   "name": "@core/mastra",
+  "private": true,
   "type": "module",
   "exports": {
     ".": {

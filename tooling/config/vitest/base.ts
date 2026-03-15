@@ -1,7 +1,7 @@
 import { defineConfig, type UserConfig } from 'vitest/config';
 
-import { sharedCoverageConfig } from './coverage.ts';
-import { sharedTestExclude } from './filters.ts';
+import { sharedCoverageConfig } from '@tooling/config/vitest/coverage';
+import { sharedTestExclude } from '@tooling/config/vitest/filters';
 
 type BaseTestConfigOptions = {
   include: string[];

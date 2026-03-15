@@ -1,5 +1,6 @@
 {
   "name": "@packages/api",
+  "private": true,
   "type": "module",
   "exports": {
     ".": {

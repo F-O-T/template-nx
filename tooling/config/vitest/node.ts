@@ -1,20 +1,26 @@
 import type { UserConfig } from 'vitest/config';
 
-import { defineBaseTestConfig } from './base.ts';
-import { integrationTestIncludes, unitTestIncludes } from './filters.ts';
+import { defineBaseTestConfig } from '@tooling/config/vitest/base';
+import {
+  integrationTestIncludes,
+  unitTestIncludes,
+} from '@tooling/config/vitest/filters';
 
 type NodeTestConfigOptions = {
   overrides?: UserConfig;
 };
 
 export function defineNodeUnitTestConfig(options: NodeTestConfigOptions = {}) {
+  const test = {
+    environment: 'node',
+    ...options.overrides?.test,
+  };
+
   return defineBaseTestConfig({
     include: unitTestIncludes,
     overrides: {
-      test: {
-        environment: 'node',
-      },
       ...options.overrides,
+      test,
     },
   });
 }
@@ -22,14 +28,17 @@ export function defineNodeUnitTestConfig(options: NodeTestConfigOptions = {}) {
 export function defineNodeIntegrationTestConfig(
   options: NodeTestConfigOptions = {},
 ) {
+  const test = {
+    environment: 'node',
+    passWithNoTests: true,
+    ...options.overrides?.test,
+  };
+
   return defineBaseTestConfig({
     include: integrationTestIncludes,
     overrides: {
-      test: {
-        environment: 'node',
-        passWithNoTests: true,
-      },
       ...options.overrides,
+      test,
     },
   });
 }
