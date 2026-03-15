@@ -1,0 +1,32 @@
+{
+  "name": "@tooling/test",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./db": {
+      "types": "./src/db/index.ts",
+      "default": "./src/db/index.ts"
+    },
+    "./vitest": {
+      "types": "./src/vitest/index.ts",
+      "default": "./src/vitest/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "check-types": "tsc --build --emitDeclarationOnly",
+    "lint": "oxlint -c ../../tooling/oxc/oxlintrc.core.json",
+    "format": "oxfmt --write src"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.3.8",
+    "drizzle-orm": "^0.45.1"
+  },
+  "devDependencies": {
+    "@tooling/config": "workspace:*",
+    "typescript": "^5"
+  }
+}

@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@tooling/config": "workspace:*",
+    "@tooling/test": "workspace:*",
     "typescript": "^5"
   }
 }
